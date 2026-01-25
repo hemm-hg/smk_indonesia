@@ -1,114 +1,135 @@
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1E40AF;
+    --color-primary-light: #3B82F6;
+    --color-white: #FFFFFF;
+    --color-black: #1F2937;
+    --color-gray-50: #F9FAFB;
+    --color-gray-100: #F3F4F6;
+    --color-gray-200: #E5E7EB;
+    --color-gray-300: #D1D5DB;
+    --color-gray-400: #9CA3AF;
+    --color-gray-500: #6B7280;
+    --color-gray-600: #4B5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-success: #10B981;
+    --color-danger: #EF4444;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
-    color: #f0f0f0;
+    background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    color: var(--color-gray-800);
     min-height: 100vh;
     line-height: 1.6;
-    padding: 20px;
+    padding: var(--spacing-lg);
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px;
-    animation: fadeIn 0.8s ease-out;
+    padding: var(--spacing-xl);
+    animation: fadeIn 0.6s ease-out;
 }
 
 .navbar {
-    background: rgba(26, 26, 26, 0.7);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 20px 30px;
-    margin-bottom: 40px;
-    box-shadow: 
-        10px 10px 30px rgba(0, 0, 0, 0.5),
-        -5px -5px 20px rgba(255, 255, 255, 0.03),
-        inset 1px 1px 0 rgba(255, 255, 255, 0.05);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+    box-shadow: var(--shadow-md);
 }
 
 .navbar-menu {
     display: flex;
-    gap: 25px;
+    gap: var(--spacing-md);
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .navbar-menu a {
-    color: #f0f0f0;
+    color: var(--color-gray-700);
     text-decoration: none;
-    padding: 12px 28px;
-    border-radius: 12px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
     font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
-        5px 5px 15px rgba(0, 0, 0, 0.3),
-        -2px -2px 10px rgba(255, 255, 255, 0.02);
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
 }
 
 .navbar-menu a:hover {
-    background: rgba(255, 107, 53, 0.15);
-    border-color: rgba(255, 107, 53, 0.3);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
     transform: translateY(-2px);
-    box-shadow: 
-        8px 8px 25px rgba(255, 107, 53, 0.1),
-        -3px -3px 15px rgba(255, 255, 255, 0.03);
-    color: #ff6b35;
+    box-shadow: var(--shadow-md);
 }
 
 .title {
     text-align: center;
-    margin-bottom: 50px;
-    padding: 40px;
-    background: rgba(26, 26, 26, 0.6);
-    backdrop-filter: blur(12px);
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 
-        15px 15px 40px rgba(0, 0, 0, 0.4),
-        -8px -8px 25px rgba(255, 255, 255, 0.02);
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-2xl);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-200);
+    box-shadow: var(--shadow-lg);
 }
 
 .title h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #ff6b35, #ff8e53);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary);
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.025em;
 }
 
 .title p {
-    font-size: 1.2rem;
-    color: #cccccc;
+    font-size: 1.125rem;
+    color: var(--color-gray-600);
     max-width: 800px;
-    margin: 10px auto;
-    line-height: 1.8;
+    margin: var(--spacing-md) auto;
+    line-height: 1.75;
 }
 
 .profile {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    margin-bottom: 50px;
-    padding: 40px;
-    background: rgba(30, 30, 30, 0.65);
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    box-shadow: 
-        12px 12px 35px rgba(0, 0, 0, 0.45),
-        -6px -6px 20px rgba(255, 255, 255, 0.02);
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-2xl);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-200);
+    box-shadow: var(--shadow-lg);
 }
 
 .profile-image {
@@ -121,112 +142,99 @@ body {
     width: 100%;
     max-width: 400px;
     height: auto;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     object-fit: cover;
-    box-shadow: 
-        8px 8px 25px rgba(0, 0, 0, 0.5),
-        -4px -4px 15px rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-md);
+    border: 3px solid var(--color-gray-100);
+    transition: var(--transition);
 }
 
 .profile-image img:hover {
-    transform: scale(1.5);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
 }
 
 .descrption h2 {
-    font-size: 2.2rem;
-    margin-bottom: 25px;
-    color: #ff6b35;
-    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary-dark);
+    font-weight: 700;
 }
 
 .descrption p {
-    font-size: 1.1rem;
-    color: #dddddd;
-    margin-bottom: 18px;
-    line-height: 1.7;
+    font-size: 1rem;
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.75;
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 35px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
 }
 
 .card-siswa, .card-guru {
-    padding: 40px;
-    border-radius: 25px;
-    background: rgba(26, 26, 26, 0.7);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.4s ease;
-    box-shadow: 
-        10px 10px 30px rgba(0, 0, 0, 0.4),
-        -5px -5px 20px rgba(255, 255, 255, 0.03);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
 }
 
 .card-siswa:hover, .card-guru:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 107, 53, 0.25);
-    box-shadow: 
-        15px 15px 40px rgba(0, 0, 0, 0.5),
-        -8px -8px 25px rgba(255, 255, 255, 0.03),
-        0 10px 30px rgba(255, 107, 53, 0.15);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
 }
 
 .card-siswa h3, .card-guru h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #ff6b35;
-    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary);
+    font-weight: 700;
 }
 
 .card-siswa p, .card-guru p {
-    font-size: 1.1rem;
-    color: #cccccc;
-    margin-bottom: 30px;
-    line-height: 1.7;
+    font-size: 1rem;
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.75;
 }
 
 .card-siswa a, .card-guru a {
     display: inline-block;
-    padding: 14px 32px;
-    background: linear-gradient(135deg, #ff6b35, #ff8e53);
-    color: white;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background: var(--color-primary);
+    color: var(--color-white);
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 
-        5px 5px 15px rgba(255, 107, 53, 0.3),
-        -2px -2px 10px rgba(255, 255, 255, 0.05);
+    font-size: 1rem;
+    transition: var(--transition);
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
 }
 
 .card-siswa a:hover, .card-guru a:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-        8px 8px 25px rgba(255, 107, 53, 0.4),
-        -3px -3px 15px rgba(255, 255, 255, 0.05);
-    background: linear-gradient(135deg, #ff8e53, #ff6b35);
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    margin-top: 40px;
-    background: rgba(20, 20, 20, 0.8);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: #aaaaaa;
-    font-size: 1rem;
-    box-shadow: 
-        8px 8px 25px rgba(0, 0, 0, 0.4),
-        -4px -4px 15px rgba(255, 255, 255, 0.02);
+    padding: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-gray-200);
+    color: var(--color-gray-500);
+    font-size: 0.875rem;
+    box-shadow: var(--shadow-sm);
 }
 
 @keyframes fadeIn {
@@ -247,36 +255,34 @@ footer {
     }
     
     .profile-image img {
-        max-width: 220px;
+        max-width: 280px;
     }
     
     .title h1 {
-        font-size: 2.3rem;
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: var(--spacing-lg);
     }
     
     .navbar-menu {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
     
     .navbar-menu a {
-        width: 100%;
         text-align: center;
-        margin-bottom: 10px;
     }
     
     .title {
-        padding: 30px 20px;
+        padding: var(--spacing-xl);
     }
     
     .title h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
     
     .card-container {
@@ -284,20 +290,20 @@ footer {
     }
     
     .profile, .card-siswa, .card-guru {
-        padding: 30px;
+        padding: var(--spacing-lg);
     }
 }
 
 @media (max-width: 480px) {
     .title h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     
     .descrption h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     
     .card-siswa h3, .card-guru h3 {
-        font-size: 1.6rem;
+        font-size: 1.25rem;
     }
 }
