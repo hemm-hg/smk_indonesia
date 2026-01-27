@@ -1,54 +1,150 @@
 <?php
 include '../config/koneksi.php';
-$data = mysqli_query($koneksi, "SELECT * FROM siswa");
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Siswa</title>
+    <title>Tambah Siswa - SMK Indonesia</title>
     <link rel="stylesheet" href="../css/siswa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="navbar">
-            <div class="navbar-menu">
-                <a href="../index.php">Home</a>
-                <a href="index.php">Siswa</a>
-                <a href="../guru/index.php">Guru</a>
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="brand-text">
+                <h3>SMK Indonesia</h3>
+                <span>Portal Siswa</span>
             </div>
         </div>
-        <div class="title">
-            <h1>Tambah Data Siswa</h1>
-            <p>Form untuk menambahkan data siswa baru ke dalam sistem.</p>
-        </div>
-        <div class="content">
-            <div class="edit-siswa">
+
+        <nav class="sidebar-nav">
+            <div class="nav-title">CORE</div>
+            <a href="../index.php" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <div class="nav-title">INTERFACE</div>
+            <a href="../auth/login.php" class="nav-item">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login</span>
+            </a>
+            <a href="../about.php" class="nav-item">
+                <i class="fas fa-info-circle"></i>
+                <span>Tentang Sekolah</span>
+            </a>
+
+            <div class="nav-title">PORTALS</div>
+            <a href="index.php" class="nav-item active">
+                <i class="fas fa-user-graduate"></i>
+                <span>Portal Siswa</span>
+            </a>
+            <a href="../guru/index.php" class="nav-item">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>Portal Guru</span>
+            </a>
+            <a href="../mapel/index.php" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Mata Pelajaran</span>
+            </a>
+        </nav>
+    </aside>
+
+    <div class="main-wrapper">
+        <header class="topbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for...">
+            </div>
+
+            <div class="topbar-right">
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="notification">
+                    <i class="fas fa-envelope"></i>
+                    <span class="badge">2</span>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">Guest User</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Tambah Data Siswa</h1>
+                    <p class="subtitle">Form untuk menambahkan data siswa baru</p>
+                </div>
+                <a href="index.php" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Kembali
+                </a>
+            </div>
+
+            <div class="form-card">
                 <form action="proces/simpan.php" method="POST">
-                    <label for="nis">NIS :</label><br>
-                    <input type="text" id="nis" name="nis" required><br><br>
-                    
-                    <label for="nama_siswa">Nama Siswa :</label><br>
-                    <input type="text" id="nama_siswa" name="nama_siswa" required><br><br>
-                    
-                    <label for="alamat">Alamat :</label><br>
-                    <input type="text" id="alamat" name="alamat" required><br><br>
-                    
-                    <label for="jenis_kelamin">Jenis Kelamin :</label><br>
-                    <select id="jenis_kelamin" name="jenis_kelamin" required>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select><br><br>
-                    <input type="submit" value="Simpan">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nis">
+                                <i class="fas fa-id-card"></i>
+                                NIS
+                            </label>
+                            <input type="text" id="nis" name="nis" placeholder="Masukkan NIS" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama_siswa">
+                                <i class="fas fa-user"></i>
+                                Nama Lengkap
+                            </label>
+                            <input type="text" id="nama_siswa" name="nama_siswa" placeholder="Masukkan nama lengkap" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="alamat">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Alamat
+                            </label>
+                            <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jenis_kelamin">
+                                <i class="fas fa-venus-mars"></i>
+                                Jenis Kelamin
+                            </label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" required>
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-Laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Simpan Data
+                        </button>
+                        <a href="index.php" class="btn-cancel">
+                            <i class="fas fa-times"></i>
+                            Batal
+                        </a>
+                    </div>
                 </form>
             </div>
-        </div>
-         <footer>
-            &copy; By SMK Indonesia 2026
-        </footer>
+        </main>
     </div>
+
 </body>
 </html>
-
