@@ -30,6 +30,10 @@
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Login</span>
             </a>
+            <a href="auth/logout.php" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
             <a href="about.php" class="nav-item">
                 <i class="fas fa-info-circle"></i>
                 <span>Tentang Sekolah</span>

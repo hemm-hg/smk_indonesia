@@ -1,4 +1,6 @@
 <?php
+session_start();  // ← INI WAJIB ADA
+require_once '../auth/check_login.php';  // ← Tanpa session_start() lagi
 include '../config/koneksi.php';
 $data = mysqli_query($koneksi, "SELECT * FROM guru");
 if (isset($_GET['cari'])) {
@@ -38,6 +40,12 @@ if (isset($_GET['cari'])) {
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Login</span>
             </a>
+
+            <a href="../auth/logout.php" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+
             <a href="../about.php" class="nav-item">
                 <i class="fas fa-info-circle"></i>
                 <span>Tentang Sekolah</span>
