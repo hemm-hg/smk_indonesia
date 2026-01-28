@@ -2,10 +2,10 @@
 session_start();  // ← INI WAJIB ADA
 require_once '../auth/check_login.php';  // ← Tanpa session_start() lagi
 include '../config/koneksi.php';
-$data = mysqli_query($koneksi, "SELECT * FROM guru");
+$data = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran");
 if (isset($_GET['cari'])) {
     $cari = $_GET['cari'];
-    $data = mysqli_query($koneksi, "SELECT * FROM guru WHERE nis LIKE '%" . $cari . "%' OR nama_guru LIKE '%" . $cari . "%'");
+    $data = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran WHERE kode_mapel LIKE '%" . $cari . "%' OR nama_mapel LIKE '%" . $cari . "%'");
 }
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ if (isset($_GET['cari'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Guru - SMK Indonesia</title>
-    <link rel="stylesheet" href="../css/guru.css">
+    <title>Data Mata Pelajaran</title>
+    <link rel="stylesheet" href="../css/mapel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -60,7 +60,7 @@ if (isset($_GET['cari'])) {
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mata_pelajaran/index.php" class="nav-item">
+            <a href="index.php" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -95,12 +95,12 @@ if (isset($_GET['cari'])) {
         <main class="content">
             <div class="page-header">
                 <div>
-                    <h1>Data Guru</h1>
-                    <p class="subtitle">Kelola data guru SMK Indonesia</p>
+                    <h1>Data Mata Pelajaran</h1>
+                    <p class="subtitle">Kelola data mata pelajaran SMK Indonesia</p>
                 </div>
                 <a href="add.php" class="btn-primary">
                     <i class="fas fa-plus"></i>
-                    Tambah Guru
+                    Tambah Mata Pelajaran
                 </a>
             </div>
 
@@ -131,13 +131,8 @@ if (isset($_GET['cari'])) {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NIP <i class="fas fa-sort"></i></th>
-                                <th>Nama Guru <i class="fas fa-sort"></i></th>
-                                <th>Alamat <i class="fas fa-sort"></i></th>
-                                <th>Jenis Kelamin <i class="fas fa-sort"></i></th>
-                                <th>Tanggal Lahir <i class="fas fa-sort"></i></th>
-                                <th>Gambar <i class="fas fa-image"></i></th>
-                                <th>Action</th>
+                                <th>Kode  Mapel <i class="fas fa-sort"></i></th>
+                                <t>Jam Pelajaran<i class="fas fa-sort"></i></t>
                             </tr>
                         </thead>
                         <tbody>
@@ -147,25 +142,15 @@ if (isset($_GET['cari'])) {
                             ?>
                             <tr>
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $row['nip']; ?></td>
-                                <td><?php echo $row['nama_guru']; ?></td>
-                                <td><?php echo $row['alamat']; ?></td>
-                                <td><?php echo $row['jenis_kelamin']; ?></td>
-                                <td><?php echo $row['tanggal_lahir']; ?></td>
-                                <td><?php if (!empty($row['gambar'])): ?>
-                                    <img src="uploads/gambar<?php echo $row['gambar']; ?>" alt="Gambar Guru" width="50">
-                                    <?php else: ?>
-                                     <div class="no-foto-icon">
-                                        <i class="fas fa-user"></i>
-                                     </div>
-                                    <?php endif; ?>
-                                </td>
+                                <td><?php echo $row['kode_mapel']; ?></td>
+                                <td><?php echo $row['nama_mapel']; ?></td>
+                                <td><?php echo $row['jam']; ?></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <a href="edit.php?nip=<?php echo $row['nip']; ?>" class="btn-edit" title="Edit">
+                                        <a href="edit.php?kode_mapel=<?php echo $row['kode_mapel']; ?>" class="btn-edit" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="proces/hapus.php?nip=<?php echo $row['nip']; ?>" class="btn-delete" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <a href="proces/hapus.php?kode_mapel=<?php echo $row['kode_mapel']; ?>" class="btn-delete" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </div>

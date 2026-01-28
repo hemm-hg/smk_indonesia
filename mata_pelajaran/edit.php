@@ -1,13 +1,16 @@
 <?php
 include '../config/koneksi.php';
+$kode_mapel = $_GET['kode_mapel'];
+$data = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran WHERE kode_mapel='$kode_mapel'");
+$row = mysqli_fetch_assoc($data);
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Guru - SMK Indonesia</title>
-    <link rel="stylesheet" href="../css/guru.css">
+    <title>Edit Mata Pelajaran - SMK Indonesia</title>
+    <link rel="stylesheet" href="../css/mapel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -17,7 +20,7 @@ include '../config/koneksi.php';
             <i class="fas fa-graduation-cap"></i>
             <div class="brand-text">
                 <h3>SMK Indonesia</h3>
-                <span>Portal Siswa</span>
+                <span>Portal Guru</span>
             </div>
         </div>
 
@@ -47,7 +50,7 @@ include '../config/koneksi.php';
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mata_pelajaran/index.php" class="nav-item">
+            <a href="../mapel/index.php" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -82,8 +85,8 @@ include '../config/koneksi.php';
         <main class="content">
             <div class="page-header">
                 <div>
-                    <h1>Tambah Data Guru</h1>
-                    <p class="subtitle">Form untuk menambahkan data guru baru</p>
+                    <h1>Edit Data Mata Pelajaran</h1>
+                    <p class="subtitle">Form untuk mengubah data mata pelajaran</p>
                 </div>
                 <a href="index.php" class="btn-secondary">
                     <i class="fas fa-arrow-left"></i>
@@ -92,65 +95,41 @@ include '../config/koneksi.php';
             </div>
 
             <div class="form-card">
-                <form action="proces/simpan.php" method="POST">
+                <form action="proces/ubah.php" method="POST">
+                    <input type="hidden" name="kode_mapel" value="<?php echo $row['kode_mapel']; ?>">
+
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="nip">
+                            <label for="kode_mapel_display">
                                 <i class="fas fa-id-card"></i>
-                                NIP
+                                Kode Mapel
                             </label>
-                            <input type="text" id="nip" name="nip" placeholder="Masukkan NIP" required>
+                            <input type="text" id="kode_mapel_display" value="<?php echo $row['kode_mapel']; ?>" disabled>
+                            <small>Kode Mapel tidak dapat diubah</small>
                         </div>
 
                         <div class="form-group">
-                            <label for="nama_guru">
+                            <label for="nama_mapel">
                                 <i class="fas fa-user"></i>
-                                Nama Lengkap
+                                Nama Mapel
                             </label>
-                            <input type="text" id="nama_guru" name="nama_guru" placeholder="Masukkan nama lengkap" required>
+                            <input type="text" id="nama_mapel" name="nama_mapel" value="<?php echo $row['nama_mapel']; ?>" required>
                         </div>
 
                         <div class="form-group full-width">
                             <label for="alamat">
                                 <i class="fas fa-map-marker-alt"></i>
-                                Alamat
+                                Jam Pelajaran
                             </label>
-                            <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+                            <textarea id="jam_pelajaran" name="jam_pelajaran" rows="3" required><?php echo $row['jam']; ?></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="jenis_kelamin">
-                                <i class="fas fa-venus-mars"></i>
-                                Jenis Kelamin
-                            </label>
-                            <select id="jenis_kelamin" name="jenis_kelamin" required>
-                                <option value="">Pilih Jenis Kelamin</option>
-                                <option value="Laki-Laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal_lahir">
-                                <i class="fas fa-venus-calendar"></i>
-                                Tanggal Lahir
-                            </label>
-                            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <label for="gambar">
-                                <i class="fas fa-venus-camera"></i>
-                                Upload Gambar
-                            </label>
-                            <input type="file" id="gambar" name="gambar" accept="image/*" required>
-                            </input>
-                        </div>
                     </div>
 
                     <div class="form-actions">
                         <button type="submit" class="btn-primary">
                             <i class="fas fa-save"></i>
-                            Simpan Data
+                            Simpan Perubahan
                         </button>
                         <a href="index.php" class="btn-cancel">
                             <i class="fas fa-times"></i>

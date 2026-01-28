@@ -60,7 +60,7 @@ if (isset($_GET['cari'])) {
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mapel/index.php" class="nav-item">
+            <a href="../mata_pelajaran/index.php" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>

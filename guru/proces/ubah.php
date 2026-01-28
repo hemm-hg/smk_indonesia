@@ -6,8 +6,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $alamat = $_POST['alamat'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
+    $gambar = $_POST['gambar'];
 
-   $update_query = mysqli_query($koneksi, "UPDATE guru SET nama_guru='$nama_guru', alamat='$alamat', jenis_kelamin='$jenis_kelamin', tanggal_lahir='$tanggal_lahir' WHERE nip='$nip'");
+   $update_query = mysqli_query($koneksi, "UPDATE guru SET nama_guru='$nama_guru', alamat='$alamat', jenis_kelamin='$jenis_kelamin', tanggal_lahir='$tanggal_lahir', gambar='$gambar' WHERE nip='$nip'");
     header("location: ../index.php");
 
     if(mysqli_query($koneksi, $update_query)){

@@ -50,7 +50,7 @@ $row = mysqli_fetch_assoc($data);
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mapel/index.php" class="nav-item">
+            <a href="../mata_pelajaran/index.php" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -141,6 +141,22 @@ $row = mysqli_fetch_assoc($data);
                                 Tanggal Lahir
                             </label>
                             <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="<?php echo $row['tanggal_lahir']; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar">
+                                <i class="fas fa-image"></i>
+                                Gambar Saat Ini
+                            </label>
+                            <?php if (!empty($row['gambar'])): ?>
+                                <img src="uploads/gambar<?php echo $row['gambar']; ?>" alt="Gambar Guru" style="max-width: 100px; max-height: 100px;">
+                            <?php else: ?>
+                                <p>Tidak ada gambar</p>
+                            <?php endif; ?>
+                            <label for="gambar">
+                                <i class="fas fa-image"></i>
+                                Ubah Gambar
+                            </label>
+                            <input type="file" id="gambar" name="gambar" accept="image/*">
                         </div>
                     </div>
 
