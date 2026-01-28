@@ -10,7 +10,7 @@ $row = mysqli_fetch_assoc($data);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Mata Pelajaran - SMK Indonesia</title>
-    <link rel="stylesheet" href="../css/mapel.css">
+    <link rel="stylesheet" href="../css/siswa.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,7 @@ $row = mysqli_fetch_assoc($data);
             <i class="fas fa-graduation-cap"></i>
             <div class="brand-text">
                 <h3>SMK Indonesia</h3>
-                <span>Portal Guru</span>
+                <span>Mata Pelajaran</span>
             </div>
         </div>
 
@@ -42,7 +42,7 @@ $row = mysqli_fetch_assoc($data);
             </a>
 
             <div class="nav-title">PORTALS</div>
-            <a href="index.php" class="nav-item active">
+            <a href="../siswa/index.php" class="nav-item">
                 <i class="fas fa-user-graduate"></i>
                 <span>Portal Siswa</span>
             </a>
@@ -50,7 +50,7 @@ $row = mysqli_fetch_assoc($data);
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mapel/index.php" class="nav-item">
+            <a href="index.php" class="nav-item active">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -85,7 +85,7 @@ $row = mysqli_fetch_assoc($data);
         <main class="content">
             <div class="page-header">
                 <div>
-                    <h1>Edit Data Mata Pelajaran</h1>
+                    <h1>Edit Mata Pelajaran</h1>
                     <p class="subtitle">Form untuk mengubah data mata pelajaran</p>
                 </div>
                 <a href="index.php" class="btn-secondary">
@@ -97,33 +97,33 @@ $row = mysqli_fetch_assoc($data);
             <div class="form-card">
                 <form action="proces/ubah.php" method="POST">
                     <input type="hidden" name="kode_mapel" value="<?php echo $row['kode_mapel']; ?>">
-
+                    
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="kode_mapel_display">
-                                <i class="fas fa-id-card"></i>
-                                Kode Mapel
+                                <i class="fas fa-barcode"></i>
+                                Kode Mata Pelajaran
                             </label>
                             <input type="text" id="kode_mapel_display" value="<?php echo $row['kode_mapel']; ?>" disabled>
-                            <small>Kode Mapel tidak dapat diubah</small>
+                            <small>Kode mata pelajaran tidak dapat diubah</small>
                         </div>
 
                         <div class="form-group">
                             <label for="nama_mapel">
-                                <i class="fas fa-user"></i>
-                                Nama Mapel
+                                <i class="fas fa-book"></i>
+                                Nama Mata Pelajaran
                             </label>
                             <input type="text" id="nama_mapel" name="nama_mapel" value="<?php echo $row['nama_mapel']; ?>" required>
                         </div>
 
-                        <div class="form-group full-width">
-                            <label for="alamat">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Jam Pelajaran
+                        <div class="form-group">
+                            <label for="jam">
+                                <i class="fas fa-clock"></i>
+                                Jam Pelajaran (JP)
                             </label>
-                            <textarea id="jam_pelajaran" name="jam_pelajaran" rows="3" required><?php echo $row['jam']; ?></textarea>
+                            <input type="number" id="jam" name="jam" value="<?php echo $row['jam']; ?>" min="1" max="10" required>
+                            <small>Jumlah jam pelajaran per minggu</small>
                         </div>
-
                     </div>
 
                     <div class="form-actions">

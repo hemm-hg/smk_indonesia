@@ -25,10 +25,15 @@
                 <span>Dashboard</span>
             </a>
 
-            <div class="nav-title">INTERFACE</div>
+            <div class="nav-title"></div>
             <a href="auth/login.php" class="nav-item">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Login</span>
+
+            <div class="nav-title">INTERFACE</div>
+            <a href="auth/logout.php" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
             </a>
             <a href="about.php" class="nav-item active">
                 <i class="fas fa-info-circle"></i>
@@ -44,7 +49,7 @@
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="mapel/index.php" class="nav-item">
+            <a href="mata_pelajaran/index.php" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>

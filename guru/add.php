@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once '../auth/check_login.php';
 include '../config/koneksi.php';
 ?>
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ include '../config/koneksi.php';
             <i class="fas fa-graduation-cap"></i>
             <div class="brand-text">
                 <h3>SMK Indonesia</h3>
-                <span>Portal Siswa</span>
+                <span>Portal Guru</span>
             </div>
         </div>
 
@@ -29,25 +31,33 @@ include '../config/koneksi.php';
             </a>
 
             <div class="nav-title">INTERFACE</div>
+            <?php if (!isset($_SESSION['logged_in'])): ?>
             <a href="../auth/login.php" class="nav-item">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Login</span>
             </a>
+            <?php else: ?>
+            <a href="../auth/logout.php" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+            <?php endif; ?>
+            
             <a href="../about.php" class="nav-item">
                 <i class="fas fa-info-circle"></i>
                 <span>Tentang Sekolah</span>
             </a>
 
             <div class="nav-title">PORTALS</div>
-            <a href="index.php" class="nav-item active">
+            <a href="../siswa/index.php" class="nav-item">
                 <i class="fas fa-user-graduate"></i>
                 <span>Portal Siswa</span>
             </a>
-            <a href="../guru/index.php" class="nav-item">
+            <a href="index.php" class="nav-item active">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mata_pelajaran/index.php" class="nav-item">
+            <a href="../mapel/index.php" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -71,7 +81,7 @@ include '../config/koneksi.php';
                     <span class="badge">2</span>
                 </div>
                 <div class="user-info">
-                    <span class="user-name">Guest User</span>
+                    <span class="user-name"><?php echo isset($_SESSION['nama']) ? $_SESSION['nama'] : 'Guest'; ?></span>
                     <div class="user-avatar">
                         <i class="fas fa-user"></i>
                     </div>
@@ -92,7 +102,7 @@ include '../config/koneksi.php';
             </div>
 
             <div class="form-card">
-                <form action="proces/simpan.php" method="POST">
+                <form action="proces/simpan.php" method="POST" enctype="multipart/form-data">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="nip">
@@ -125,25 +135,26 @@ include '../config/koneksi.php';
                             </label>
                             <select id="jenis_kelamin" name="jenis_kelamin" required>
                                 <option value="">Pilih Jenis Kelamin</option>
-                                <option value="Laki-Laki">Laki-laki</option>
+                                <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="tanggal_lahir">
-                                <i class="fas fa-venus-calendar"></i>
+                                <i class="fas fa-calendar"></i>
                                 Tanggal Lahir
                             </label>
                             <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
-                            </input>
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group full-width">
                             <label for="gambar">
-                                <i class="fas fa-venus-camera"></i>
-                                Upload Gambar
+                                <i class="fas fa-camera"></i>
+                                Foto Profil
                             </label>
-                            <input type="file" id="gambar" name="gambar" accept="image/*" required>
-                            </input>
+                            <input type="file" id="gambar" name="gambar" accept="image/*">
+                            <small>Format: JPG, PNG, GIF (Max: 2MB)</small>
                         </div>
                     </div>
 

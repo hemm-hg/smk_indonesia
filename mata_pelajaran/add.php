@@ -7,7 +7,7 @@ include '../config/koneksi.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Mata Pelajaran - SMK Indonesia</title>
-    <link rel="stylesheet" href="../css/mapel.css">
+    <link rel="stylesheet" href="../css/siswa.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -17,7 +17,7 @@ include '../config/koneksi.php';
             <i class="fas fa-graduation-cap"></i>
             <div class="brand-text">
                 <h3>SMK Indonesia</h3>
-                <span>Portal Siswa</span>
+                <span>Mata Pelajaran</span>
             </div>
         </div>
 
@@ -39,7 +39,7 @@ include '../config/koneksi.php';
             </a>
 
             <div class="nav-title">PORTALS</div>
-            <a href="index.php" class="nav-item active">
+            <a href="../siswa/index.php" class="nav-item">
                 <i class="fas fa-user-graduate"></i>
                 <span>Portal Siswa</span>
             </a>
@@ -47,7 +47,7 @@ include '../config/koneksi.php';
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="../mapel/index.php" class="nav-item">
+            <a href="index.php" class="nav-item active">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -82,8 +82,8 @@ include '../config/koneksi.php';
         <main class="content">
             <div class="page-header">
                 <div>
-                    <h1>Tambah Data Mata Pelajaran</h1>
-                    <p class="subtitle">Form untuk menambahkan data mata pelajaran baru</p>
+                    <h1>Tambah Mata Pelajaran</h1>
+                    <p class="subtitle">Form untuk menambahkan mata pelajaran baru</p>
                 </div>
                 <a href="index.php" class="btn-secondary">
                     <i class="fas fa-arrow-left"></i>
@@ -96,29 +96,30 @@ include '../config/koneksi.php';
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="kode_mapel">
-                                <i class="fas fa-id-card"></i>
-                                Kode Mapel
+                                <i class="fas fa-barcode"></i>
+                                Kode Mata Pelajaran
                             </label>
-                            <input type="text" id="kode_mapel" name="kode_mapel" placeholder="Masukkan Kode Mapel" required>
+                            <input type="text" id="kode_mapel" name="kode_mapel" placeholder="Contoh: MTK001" required>
                         </div>
 
                         <div class="form-group">
                             <label for="nama_mapel">
-                                <i class="fas fa-user"></i>
-                                Nama Mapel
+                                <i class="fas fa-book"></i>
+                                Nama Mata Pelajaran
                             </label>
-                            <input type="text" id="nama_mapel" name="nama_mapel" placeholder="Masukkan nama mapel" required>
+                            <input type="text" id="nama_mapel" name="nama_mapel" placeholder="Contoh: Matematika" required>
                         </div>
 
-                        <div class="form-group full-width">
-                            <label for="jam_pelajaran">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Jam Pelajaran
+                        <div class="form-group">
+                            <label for="jam">
+                                <i class="fas fa-clock"></i>
+                                Jam Pelajaran (JP)
                             </label>
-                            <textarea id="jam_pelajaran" name="jam_pelajaran" rows="3" placeholder="Masukkan jam pelajaran" required></textarea>
+                            <input type="number" id="jam" name="jam" placeholder="Contoh: 4" min="1" max="10" required>
+                            <small>Jumlah jam pelajaran per minggu</small>
                         </div>
-
                     </div>
+
                     <div class="form-actions">
                         <button type="submit" class="btn-primary">
                             <i class="fas fa-save"></i>

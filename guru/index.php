@@ -1,6 +1,6 @@
 <?php
-session_start();  // ← INI WAJIB ADA
-require_once '../auth/check_login.php';  // ← Tanpa session_start() lagi
+session_start();
+require_once '../auth/check_login.php';
 include '../config/koneksi.php';
 $data = mysqli_query($koneksi, "SELECT * FROM guru");
 if (isset($_GET['cari'])) {
@@ -119,7 +119,7 @@ if (isset($_GET['cari'])) {
                         </div>
                         <div class="table-search">
                             <form action="index.php" method="GET">
-                                <label>Search:</label>
+                                <label>Search : </label>
                                 <input type="text" name="cari" placeholder="Cari NIP atau Nama..." value="<?php if (isset($_GET['cari'])) { echo $_GET['cari']; } ?>">
                             </form>
                         </div>
@@ -152,14 +152,12 @@ if (isset($_GET['cari'])) {
                                 <td><?php echo $row['alamat']; ?></td>
                                 <td><?php echo $row['jenis_kelamin']; ?></td>
                                 <td><?php echo $row['tanggal_lahir']; ?></td>
-                                <td><?php if (!empty($row['gambar'])): ?>
-                                    <img src="uploads/gambar<?php echo $row['gambar']; ?>" alt="Gambar Guru" width="50">
-                                    <?php else: ?>
-                                     <div class="no-foto-icon">
-                                        <i class="fas fa-user"></i>
-                                     </div>
-                                    <?php endif; ?>
-                                </td>
+                                <td class="table-image-cell">
+                                    <?php if ($row['gambar']) { ?>
+                                        <img src="../assets/uploads/image/<?php echo $row['gambar']; ?>" alt="Gambar Guru" class="table-image">
+                                    <?php } else { ?>
+                                        <span>No Image</span>
+                                    <?php } ?>
                                 <td>
                                     <div class="action-buttons">
                                         <a href="edit.php?nip=<?php echo $row['nip']; ?>" class="btn-edit" title="Edit">

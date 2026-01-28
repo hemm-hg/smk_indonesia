@@ -1,8 +1,6 @@
 <?php
-session_start();  // ← INI WAJIB ADA
-require_once '../auth/check_login.php';  // ← Tanpa session_start() lagi
 include '../config/koneksi.php';
-$data = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran");
+$data = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran ORDER BY kode_mapel ASC");
 if (isset($_GET['cari'])) {
     $cari = $_GET['cari'];
     $data = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran WHERE kode_mapel LIKE '%" . $cari . "%' OR nama_mapel LIKE '%" . $cari . "%'");
@@ -13,8 +11,8 @@ if (isset($_GET['cari'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Mata Pelajaran</title>
-    <link rel="stylesheet" href="../css/mapel.css">
+    <title>Data Mata Pelajaran - SMK Indonesia</title>
+    <link rel="stylesheet" href="../css/siswa.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -24,7 +22,7 @@ if (isset($_GET['cari'])) {
             <i class="fas fa-graduation-cap"></i>
             <div class="brand-text">
                 <h3>SMK Indonesia</h3>
-                <span>Portal Guru</span>
+                <span>Mata Pelajaran</span>
             </div>
         </div>
 
@@ -40,19 +38,13 @@ if (isset($_GET['cari'])) {
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Login</span>
             </a>
-
-            <a href="../auth/logout.php" class="nav-item">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </a>
-
             <a href="../about.php" class="nav-item">
                 <i class="fas fa-info-circle"></i>
                 <span>Tentang Sekolah</span>
             </a>
 
             <div class="nav-title">PORTALS</div>
-            <a href="index.php" class="nav-item active">
+            <a href="../siswa/index.php" class="nav-item">
                 <i class="fas fa-user-graduate"></i>
                 <span>Portal Siswa</span>
             </a>
@@ -60,7 +52,7 @@ if (isset($_GET['cari'])) {
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Portal Guru</span>
             </a>
-            <a href="index.php" class="nav-item">
+            <a href="index.php" class="nav-item active">
                 <i class="fas fa-book"></i>
                 <span>Mata Pelajaran</span>
             </a>
@@ -120,7 +112,7 @@ if (isset($_GET['cari'])) {
                         <div class="table-search">
                             <form action="index.php" method="GET">
                                 <label>Search:</label>
-                                <input type="text" name="cari" placeholder="Cari NIP atau Nama..." value="<?php if (isset($_GET['cari'])) { echo $_GET['cari']; } ?>">
+                                <input type="text" name="cari" placeholder="Cari Kode atau Nama Mapel..." value="<?php if (isset($_GET['cari'])) { echo $_GET['cari']; } ?>">
                             </form>
                         </div>
                     </div>
@@ -131,8 +123,10 @@ if (isset($_GET['cari'])) {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kode  Mapel <i class="fas fa-sort"></i></th>
-                                <t>Jam Pelajaran<i class="fas fa-sort"></i></t>
+                                <th>Kode Mapel <i class="fas fa-sort"></i></th>
+                                <th>Nama Mata Pelajaran <i class="fas fa-sort"></i></th>
+                                <th>Jam Pelajaran <i class="fas fa-sort"></i></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -144,13 +138,13 @@ if (isset($_GET['cari'])) {
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $row['kode_mapel']; ?></td>
                                 <td><?php echo $row['nama_mapel']; ?></td>
-                                <td><?php echo $row['jam']; ?></td>
+                                <td><?php echo $row['jam']; ?> JP</td>
                                 <td>
                                     <div class="action-buttons">
                                         <a href="edit.php?kode_mapel=<?php echo $row['kode_mapel']; ?>" class="btn-edit" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="proces/hapus.php?kode_mapel=<?php echo $row['kode_mapel']; ?>" class="btn-delete" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <a href="proces/hapus.php?kode_mapel=<?php echo $row['kode_mapel']; ?>" class="btn-delete" title="Delete" onclick="return confirm('Yakin ingin menghapus mata pelajaran ini?')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </div>
